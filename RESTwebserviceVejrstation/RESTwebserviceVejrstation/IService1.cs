@@ -17,10 +17,9 @@ namespace RESTwebserviceVejrstation
         //Routing til metoden "GetAll".
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "getall/")]
-        List<Vejrstation> GetAll();
+        List<Dataset> GetAll();
 
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+     
 
         // TODO: Add your service operations here
     }
