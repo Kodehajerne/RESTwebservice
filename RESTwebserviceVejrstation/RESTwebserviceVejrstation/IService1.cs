@@ -14,7 +14,7 @@ namespace RESTwebserviceVejrstation
     {
 
         [OperationContract]
-        //Routing til metoden "GetAll".
+        //Routing til metoden "GetAll".Bruges i browseren til at vise alt data fra databasen. 
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "getall/")]
         List<Dataset> GetAll();
