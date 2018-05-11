@@ -24,7 +24,7 @@ namespace RESTwebserviceVejrstation
             List<Dataset> OList = new List<Dataset>();
 
             // dette er en connection string som vælger hvilke tabels vores data skal ind i.
-            const string sqlstring = "SELECT Temperatur, Dato, Luftfugtighed FROM dbo.Vejrstation"; 
+            const string sqlstring = "SELECT Id, Temperatur, Dato, Luftfugtighed FROM dbo.Vejrstation"; 
             
             using (var DBconnection = new SqlConnection(ConnectionString))
             {
@@ -40,7 +40,8 @@ namespace RESTwebserviceVejrstation
                         dataset.Temperatur = reader.GetString(0).Trim();
                         dataset.Dato = reader.GetString(1).Trim();
                         dataset.Luftfugtighed = reader.GetString(2).Trim();
-                          //trim fjerne whitespaces. 
+                        dataset.Id = reader.GetInt32(3);
+                        //trim fjerne whitespaces. 
 
                         OList.Add(dataset);
                     }
