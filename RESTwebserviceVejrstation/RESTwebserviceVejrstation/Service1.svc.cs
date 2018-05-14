@@ -24,7 +24,7 @@ namespace RESTwebserviceVejrstation
             List<Dataset> OList = new List<Dataset>();
 
             // dette er en connection string som vælger hvilke tabels vores data skal ind i.
-            const string sqlstring = "SELECT Id, Temperatur, Dato, Luftfugtighed FROM dbo.Vejrstation"; 
+            const string sqlstring = "SELECT Temperatur, Dato, Luftfugtighed, Id FROM dbo.Vejrstation"; 
             
             using (var DBconnection = new SqlConnection(ConnectionString))
             {
