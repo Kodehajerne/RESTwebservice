@@ -49,5 +49,38 @@ namespace RESTwebserviceVejrstation
                 return OList;
             }
         }
+
+        public Dataset getnewest()
+        {
+            //listen der skal vises i browseren
+            List<Dataset> OList = new List<Dataset>();
+            
+
+            // dette er en connection string som vælger hvilke tabels vores data skal ind i.
+            const string sqlstring = "SELECT MAX(Id) FROM dbo.Vejrstation";
+           
+            using (var DBconnection = new SqlConnection(ConnectionString))
+            {
+                DBconnection.Open();
+                var sqlcommand = new SqlCommand(sqlstring, DBconnection);
+
+                // Her benytter vi vores sqlconnection og sqlcommand til, at aflæse data fra databasen.
+                using (SqlDataReader reader = sqlcommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Dataset dataset = new Dataset();
+                        dataset.Temperatur = reader.GetString(0).Trim();
+                        dataset.Dato = reader.GetString(1).Trim();
+                        dataset.Luftfugtighed = reader.GetString(2).Trim();
+                        dataset.Id = reader.GetInt32(3);
+                        //trim fjerne whitespaces. 
+
+                        OList.Add(dataset);
+                    }
+                }
+                return OList;
+            }
+        }
     }
 }
