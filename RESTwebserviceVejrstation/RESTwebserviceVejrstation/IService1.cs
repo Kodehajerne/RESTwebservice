@@ -26,7 +26,7 @@ namespace RESTwebserviceVejrstation
         //Routing til metoden "GetAll".Bruges i browseren til at vise alt data fra databasen. 
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "getnewest/")]
-        List<Dataset> getnewest();
+        Dataset getnewest();
 
         // TODO: Add your service operations here
     }
