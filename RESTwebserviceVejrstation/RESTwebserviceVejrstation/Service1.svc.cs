@@ -53,11 +53,11 @@ namespace RESTwebserviceVejrstation
         public Dataset getnewest()
         {
             //listen der skal vises i browseren
-            List<Dataset> OList = new List<Dataset>();
+            Dataset datasetsave = null;
             
 
             // dette er en connection string som vælger hvilke tabels vores data skal ind i.
-            const string sqlstring = "SELECT MAX(Id) FROM dbo.Vejrstation";
+            const string sqlstring = "SELECT Temperatur, Dato, Luftfugtighed, Id FROM dbo.Vejrstation WHERE ID = (SELECT MAX(Id) FROM dbo.Vejrstation)";
            
             using (var DBconnection = new SqlConnection(ConnectionString))
             {
@@ -76,10 +76,10 @@ namespace RESTwebserviceVejrstation
                         dataset.Id = reader.GetInt32(3);
                         //trim fjerne whitespaces. 
 
-                        OList.Add(dataset);
+                        datasetsave = dataset;
                     }
                 }
-                return OList;
+                return datasetsave;
             }
         }
     }
