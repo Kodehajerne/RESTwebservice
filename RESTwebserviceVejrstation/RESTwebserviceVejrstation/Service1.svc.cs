@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using RESTwebserviceVejrstation;
 
 namespace RESTwebserviceVejrstation
 {
@@ -81,6 +82,24 @@ namespace RESTwebserviceVejrstation
                 }
                 return datasetsave;
             }
+
+            
+        }
+        public void DeleteID(string id)
+        {
+            const string deleteID = "delete from dbo.Vejrstation WHERE ID=@Id";
+
+            using (SqlConnection databaseconnection = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand deleteCommand = new SqlCommand(deleteID, databaseconnection)) 
+                {
+                    databaseconnection.Open();
+
+                    deleteCommand.Parameters.AddWithValue("@Id", id);
+                    deleteCommand.ExecuteNonQuery();
+                }
+            }
+
         }
     }
 }

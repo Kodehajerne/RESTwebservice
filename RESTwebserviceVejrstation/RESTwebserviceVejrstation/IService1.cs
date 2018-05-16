@@ -28,6 +28,13 @@ namespace RESTwebserviceVejrstation
         UriTemplate = "getnewest/")]
         Dataset getnewest();
 
+        [OperationContract]
+        [WebInvoke(Method = "DELETE",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "Delete/{id}")]
+        void DeleteID(string id);
+
         // TODO: Add your service operations here
     }
 
