@@ -18,6 +18,8 @@ namespace RESTwebserviceVejrstation
         private const string ConnectionString =
             "Server=tcp:myservereasj.database.windows.net,1433;Initial Catalog=mydatabase;Persist Security Info=False;User ID=Serveradmin;Password=Test12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
+
+
         //GetAll er en metode som vi benytter til at hente og vise alt vores data fra databasen.
         public List<Dataset> GetAll()
         {
