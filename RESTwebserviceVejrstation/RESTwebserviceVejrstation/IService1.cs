@@ -35,6 +35,12 @@ namespace RESTwebserviceVejrstation
             BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "Delete/{id}")]
         void DeleteID(string id);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+       UriTemplate = "getavg/")]
+        string getavg();
+
+
         // TODO: Add your service operations here
     }
 

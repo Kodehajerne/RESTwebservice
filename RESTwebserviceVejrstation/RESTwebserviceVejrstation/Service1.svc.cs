@@ -103,5 +103,24 @@ namespace RESTwebserviceVejrstation
             }
 
         }
+
+        public string getavg()
+        {
+            List<Dataset> liste = GetAll();
+            double totalTemp = 0;
+            double totalHumi = 0;
+
+            foreach (var item in liste)
+            {
+                totalTemp = totalTemp + Convert.ToDouble($"{item.Temperatur}");
+                totalHumi = totalHumi + Convert.ToDouble($"{item.Luftfugtighed}");
+            }
+            double tempAvg = (totalTemp/liste.Count)/10;
+            double humiAvg = (totalTemp/liste.Count)/10;
+
+            string sendstring = ($"{tempAvg}, {humiAvg}");
+
+            return sendstring;
+        }
     }
 }
