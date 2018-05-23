@@ -104,8 +104,9 @@ namespace RESTwebserviceVejrstation
 
         }
 
-        public string getavg()
+        public Dataset getavg()
         {
+            Dataset datasetsave = null;
             List<Dataset> liste = GetAll();
             double totalTemp = 0;
             double totalHumi = 0;
@@ -115,12 +116,17 @@ namespace RESTwebserviceVejrstation
                 totalTemp = totalTemp + Convert.ToDouble($"{item.Temperatur}");
                 totalHumi = totalHumi + Convert.ToDouble($"{item.Luftfugtighed}");
             }
-            double tempAvg = (totalTemp/liste.Count)/10;
-            double humiAvg = (totalTemp/liste.Count)/10;
+          
+            double tempAvg = (totalTemp/liste.Count);
+            double humiAvg = (totalTemp/liste.Count);
 
-            string sendstring = ($"{tempAvg}, {humiAvg}");
-
-            return sendstring;
+            Dataset dataset = new Dataset();
+            dataset.TemperaturAvg = tempAvg;
+            dataset.LuftfugtighedAvg = humiAvg;
+            datasetsave = dataset;
+        
+            return datasetsave;
         }
+
     }
 }

@@ -38,7 +38,7 @@ namespace RESTwebserviceVejrstation
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
        UriTemplate = "getavg/")]
-        string getavg();
+        Dataset getavg();
 
 
         // TODO: Add your service operations here
